@@ -1,10 +1,24 @@
 class Curso(
         val nome: String,
-        val codigoDoCurso: String,
-        val professorTitular: ProfessorTitular,
-        val professorAdjunto: ProfessorAdjunto,
+        var codigoDoCurso: Int,
         val quantidadeMaxAlunos: Int,
-        val alunos: List<Aluno>
 ) {
+
+    val professorTitular: ProfessorTitular? = null
+    val professorAdjunto: ProfessorAdjunto? = null
+    val alunos = mutableListOf<Aluno>()
+
+    fun adicionarUmAluno(umAluno: Aluno): Boolean {
+        return if (alunos.size >= quantidadeMaxAlunos){
+             false
+        } else {
+            alunos.add(umAluno)
+            true
+        }
+    }
+
+    fun excluirAluno(umAluno: Aluno) {
+        alunos.remove(umAluno)
+    }
 }
 
