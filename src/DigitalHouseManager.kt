@@ -14,4 +14,29 @@ class DigitalHouseManager {
         cursos.add(curso)
     }
 
+    fun excluirCurso(codigoCurso: Int) {
+        cursos.forEach {
+            it.codigoDoCurso = codigoCurso
+            cursos.remove(it)
+        }
+    }
+
+    fun registrarProfessorAdjunto(nome: String, sobrenome: String,
+                                  codigoProfessor: Int, quantidadeDeHoras: Int) {
+        val professorAdjunto = ProfessorAdjunto(quantidadeDeHoras, nome, sobrenome, codigoProfessor)
+
+        professores.add(professorAdjunto)
+    }
+
+    fun registrarProfessorTitular(nome: String, sobrenome: String ,
+                                  codigoProfessor: Int, especialidade: String ){
+        val professorTitular = ProfessorTitular(especialidade, nome, sobrenome,  codigoProfessor)
+    }
+
+    fun excluirProfessor(codigoProfessor: Int) {
+        professores.forEach {
+            it.codigoDoProfessor = codigoProfessor
+            professores.remove(it)
+        }
+    }
 }

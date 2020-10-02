@@ -1,6 +1,7 @@
 abstract class Professro (
         val nome: String,
         val sobrenome: String,
-        val tempoDeCasa: Int,
-        val codigoDoProfessor: Int
+        var codigoDoProfessor: Int
 )
+
+    val tempoDeCasa = 0
