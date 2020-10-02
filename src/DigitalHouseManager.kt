@@ -15,10 +15,8 @@ class DigitalHouseManager {
     }
 
     fun excluirCurso(codigoCurso: Int) {
-        cursos.forEach {
-            it.codigoDoCurso = codigoCurso
-            cursos.remove(it)
-        }
+        val curso = buscaCurso(codigoCurso)
+        cursos.remove(curso)
     }
 
     fun registrarProfessorAdjunto(nome: String, sobrenome: String,
@@ -34,9 +32,54 @@ class DigitalHouseManager {
     }
 
     fun excluirProfessor(codigoProfessor: Int) {
+        val professro = buscaProfessor(codigoProfessor)
+        professores.remove(professro)
+
+    }
+
+    fun registrarAluno(nome: String , sobrenome: String , codigoAluno: Int){
+        val aluno = Aluno(nome, sobrenome, codigoAluno )
+        alunos.add(aluno)
+    }
+
+    fun matricularAluno(codigoAluno: Int,  codigoCurso: Int){
+        val aluno = buscarAluno(codigoAluno)
+        val curso = buscaCurso(codigoCurso)
+
+        var adicionou = false
+        if (curso != null
+                && aluno != null){
+            adicionou = curso.adicionarUmAluno(aluno)
+        }
+        if (adicionou){
+            val matricula = Matricula(aluno!!, curso!!)
+            matriculas.add(matricula)
+            println("Matrícula realizada!")
+        } else {
+            println("Não foi possível realizar a matrícula, pois não há vagas")
+        }
+    }
+
+    private fun buscaCurso(codigoCurso: Int): Curso? {
+        cursos.forEach {
+            it.codigoDoCurso = codigoCurso
+            return it
+        }
+        return null
+    }
+    private fun buscaProfessor(codigoProfessor: Int): Professro? {
         professores.forEach {
             it.codigoDoProfessor = codigoProfessor
-            professores.remove(it)
+            return it
         }
+        return null
+    }
+
+    private fun buscarAluno(codigoAluno: Int): Aluno? {
+        alunos.forEach {
+            it.codigoAluno = codigoAluno
+            return it
+        }
+        return null
     }
 }
