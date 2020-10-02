@@ -18,4 +18,27 @@ fun main() {
     digitalHouseManager.matricularAluno(4, 1)
     digitalHouseManager.matricularAluno(5, 1)
     digitalHouseManager.matricularAluno(6, 1)
+
+
+    digitalHouseManager.registrarProfessorAdjunto("professor", "adjunto", 1, 10)
+    digitalHouseManager.registrarProfessorAdjunto("professor2", "adjunto2", 2, 10)
+    digitalHouseManager.registrarProfessorTitular("proffy", "titular", 3, "poo")
+    digitalHouseManager.registrarProfessorTitular("proffy", "titular", 4, "poo2")
+
+    println(digitalHouseManager.professores)
+    digitalHouseManager.alocarProfessores(1, 3, 1)
+    digitalHouseManager.registrarCurso("logica2" ,2, 5)
+
+    println("------------------")
+    println("Tamanho do array de cursos: ${digitalHouseManager.cursos.size}")
+    println("Remove curso")
+    digitalHouseManager.excluirCurso(2)
+    println("Tamanho do array de cursos: ${digitalHouseManager.cursos.size}")
+    println("------------------")
+    println("Tamanho do array de professores ${digitalHouseManager.professores.size} ")
+    println("Remove professor")
+    digitalHouseManager.excluirProfessor(4)
+    println("Tamanho do array de professores ${digitalHouseManager.professores.size} ")
+    println("------------------")
+
 }
